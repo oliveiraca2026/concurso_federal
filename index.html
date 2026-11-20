@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verbos: 30 itens inéditos estilo CEBRASPE</title>
+<style>
+:root{--bg:#14161b;--surface:#1d2027;--surface2:#252932;--line:#353a45;--ink:#eceef2;--ink2:#c3c8d2;--muted:#9097a3;--accent:#7fb2ff;--accent-bg:#1e2d45;--ok:#8fd0a8;--ok-bg:#1f3328;--err:#ff8a7a;--err-bg:#3a201e;--mark:#3b3420;--markink:#f2c35a}
+:root[data-theme="light"]{--bg:#f6f7f9;--surface:#fff;--surface2:#eef1f5;--line:#d4d9e1;--ink:#1a1d23;--ink2:#3a404b;--muted:#5f6672;--accent:#1f5fbf;--accent-bg:#e5eefb;--ok:#1d6b3e;--ok-bg:#e3f3e9;--err:#b3261e;--err-bg:#fbe7e5;--mark:#fbf0d9;--markink:#6b4600}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 60px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:10px 16px}
+.bar strong{font-size:14.5px}
+.score{font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.score b{color:var(--ink)}
+.sp{flex:1}
+button{font:inherit;font-size:14px;background:var(--surface2);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--accent)}
+h1{font-size:27px;line-height:1.25;margin:26px 0 4px}
+.sub{color:var(--muted);margin:0 0 10px}
+.nav{font-size:14px;margin:8px 0 14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0}
+.card h2{font-size:16px;margin:0 0 6px;color:var(--accent)}
+.card ul{margin:0;padding-left:20px}
+.card li{margin:3px 0}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:18px 0}
+.qh{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.qn{font-weight:800;color:var(--ink);font-size:15px}
+.badge{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--accent);border:1px solid var(--accent);border-radius:5px;padding:0 6px}
+.tec{font-variant-numeric:tabular-nums}
+.tipo{border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.asp{font-size:13px;color:var(--muted);margin:6px 0}
+.focus{border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:8px;padding:8px 12px;margin:8px 0}
+.flab{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--accent);text-transform:uppercase}
+.focus p{margin:4px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:16px}
+mark{background:var(--mark);color:var(--markink);font-weight:700;padding:0 2px;border-radius:3px}
+details.txt{border:1px solid var(--line);border-radius:8px;padding:6px 12px;margin:8px 0;background:var(--surface2)}
+details.txt summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--ink2)}
+details.txt p{font-family:Georgia,"Times New Roman",serif;font-size:15.5px;margin:8px 0}
+.cmd{font-size:14px;color:var(--ink2);margin:10px 0 2px}
+.item{font-weight:600;margin:6px 0 10px}
+.opts{list-style:none;padding:0;margin:0 0 10px}
+.opts li{margin:4px 0;padding-left:28px;text-indent:-28px}
+.ol{display:inline-block;width:28px;text-indent:0;font-weight:700;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btns button{min-width:84px;font-weight:600}
+.q.done .btns button{cursor:default}
+.btns button.right{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.btns button.wrong{background:var(--err-bg);border-color:var(--err);color:var(--err)}
+.fb{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+html.js .q:not(.done) .fb{display:none}
+.verdict{font-weight:800;margin:0}
+.verdict.ok{color:var(--ok)}.verdict.no{color:var(--err)}
+.gab{margin:2px 0}
+.com{margin:4px 0 0;color:var(--ink2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px;margin:10px 0}
+.cell{display:flex;flex-direction:column;align-items:center;border:1px solid var(--line);border-radius:8px;padding:6px 4px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.cell span{font-size:12px;color:var(--muted)}
+.cell b{font-size:16px}
+html.js .grid:not(.show) .cell:not(.ans) .gv{visibility:hidden}
+.cell.ok{background:var(--ok-bg);border-color:var(--ok)}
+.cell.ok b::after{content:" ✓"}
+.cell.no{background:var(--err-bg);border-color:var(--err)}
+.cell.no b::after{content:" ✗"}
+.small{font-size:13.5px;color:var(--muted)}
+footer{margin-top:30px;font-size:13px;color:var(--muted)}
+@media print{
+ :root,:root[data-theme="light"]{--bg:#fff;--surface:#fff;--surface2:#fff;--line:#999;--ink:#000;--ink2:#222;--muted:#444;--accent:#000;--accent-bg:#f3f3f3;--ok:#000;--ok-bg:#fff;--err:#000;--err-bg:#fff;--mark:#fff;--markink:#000}
+ body{font-size:11pt}
+ .bar,.btns,.noprint{display:none!important}
+ html.js .q .fb{display:block!important}
+ .verdict{display:none}
+ html.js .grid .gv{visibility:visible!important}
+ .q,.card,.cell{break-inside:avoid}
+ mark{text-decoration:underline;font-weight:700}
+ details.txt{border:none;padding:0;background:none}
+ a{color:#000;text-decoration:none}
+}
+.badge.ined{color:var(--markink);border-color:var(--markink);background:var(--mark)}
+.authored{font-size:11px;font-weight:800;color:var(--muted);border:1px dashed var(--muted);border-radius:5px;padding:0 5px;margin-left:6px}
+.gh{font-size:20px;margin:30px 0 8px;padding-top:8px;border-top:2px solid var(--line)}
+.texto{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:10px 16px;margin:8px 0}
+.texto p{font-family:Georgia,"Times New Roman",serif;font-size:16.5px;text-indent:1.5em;margin:8px 0}
+details.card summary{cursor:pointer}
+@media print{.texto{break-inside:avoid}details.card{display:block}}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--surface);color:var(--ink);padding:10px;z-index:20}.skip:focus{left:8px}button:disabled{opacity:.85} @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo principal</a>
+<div class="bar"><div class="wrap">
+ <strong>Verbos · 30 itens inéditos</strong>
+ <span class="score" id="score" role="status" aria-live="polite">Respondidas <b id="sAns">0</b>/30 · Acertos <b id="sOk">0</b> · Aproveitamento <b id="sPct">—</b></span>
+ <span class="sp"></span>
+ <button type="button" id="bTheme" class="noprint">Tema</button>
+ <button type="button" id="bReset" class="noprint">Recomeçar</button>
+ <button type="button" id="bPrint" class="noprint">Imprimir / PDF</button>
+</div></div>
+<main class="wrap" id="conteudo">
+<h1>Verbos · 30 itens inéditos</h1>
+<p class="sub">Ver × vir, haver e fazer impessoais, existir, ser × estar, ratificar × retificar, acentuar × ressaltar, tempos e modos, auxiliares. Itens elaborados a partir dos infográficos “Verbos difíceis em Português” e “Verbos em Português: tempos, modos e verbos difíceis”.</p>
+
+
+<details class="card"><summary><b>Ajustes ao infográfico</b> (pontos que as questões corrigem)</summary><ul>
+<li><b>Fazer impessoal</b>: o infográfico diz que fazer “concorda com o tempo”. Na verdade, ele não tem sujeito e fica <b>sempre no singular</b> (faz meses, fazia anos). Ver item 16.</li>
+<li><b>“Caso”</b> não leva futuro do subjuntivo: <b>caso + presente do subjuntivo</b> (caso venham, caso faltem). O futuro do subjuntivo vem com “se” e “quando” (se vierem). Ver item 9.</li>
+<li><b>Subjuntivo</b> não é sempre “possibilidade, dúvida ou desejo”: após “embora” ele é exigido pela conjunção, mesmo com fato real. Ver item 27.</li>
+<li><b>Vir</b> é intransitivo e não “transitivo indireto em locuções”. Em “vir a + infinitivo”, ele funciona como auxiliar.</li>
+<li>Os termos “bivocação” e a frase “viram concorda com que (os idiomas)” não correspondem a conceitos das aulas e foram desconsiderados.</li>
+<li>A dica “termos absolutos (sempre, apenas…) tornam o item errado” é só uma tendência. Haver impessoal fica <b>sempre</b> no singular, e um item que diga isso está certo.</li>
+</ul></details>
+<p class="small">30 itens Certo/Errado <b>inéditos</b> (15 Certo · 15 Errado), organizados em dois textos autorais e um bloco de itens avulsos. Não são questões de prova: servem para treinar o formato CEBRASPE. Clique na resposta para ver o gabarito e o comentário.</p>
+
+<h2 class="gh">Texto I</h2><div class="texto"><span class="flab">Texto I <span class="authored">TEXTO AUTORAL</span></span><p>Há três anos, a biblioteca da Câmara iniciou a digitalização de seu acervo de projetos de lei. Quando os técnicos viram o volume de documentos, perceberam que o trabalho levaria mais tempo do que se previra. Houve atrasos, mas a equipe manteve o cronograma revisado.</p><p>Se os recursos vierem no próximo semestre, a equipe concluirá a etapa final. Caso faltem verbas, o serviço será retomado em 2027. Os servidores que vieram de outros setores têm contribuído para o projeto, e o relatório final, que o diretor ratificou na semana passada, retificou dados divulgados anteriormente.</p></div><p class="cmd"><b>Considerando os aspectos linguísticos do texto I, julgue os itens a seguir.</b></p>
+<article class="q" id="q1" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 01</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma verbal “viram”, no segundo período do primeiro parágrafo, pertence ao verbo ver e está flexionada no pretérito perfeito do indicativo.</p>
+ <div class="btns" role="group" aria-label="Responder item 1"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Ver × vir · identificação da forma</span></p><p class="com">“Os técnicos viram o volume de documentos” = enxergaram, constataram. “Viram” é a 3ª pessoa do plural do pretérito perfeito do indicativo de VER (vi, viste, viu, vimos, vistes, viram). Do verbo vir, a forma correspondente seria “vieram”.</p></div>
+</article>
+<article class="q" id="q2" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 02</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A substituição de “viram” por vieram preservaria a correção gramatical e o sentido original do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 2"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Ver × vir · substituição</span></p><p class="com">“Vieram” é pretérito perfeito de VIR (deslocar-se). “Quando os técnicos vieram o volume de documentos” fica agramatical, porque vir não admite objeto direto, e o sentido de constatação se perde.</p></div>
+</article>
+<article class="q" id="q3" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 03</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma “previra” indica fato anterior a outro fato passado e poderia ser substituída por havia previsto, sem prejuízo da correção gramatical e dos sentidos do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 3"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Mais-que-perfeito · simples = composto</span></p><p class="com">A previsão ocorreu antes de os técnicos “perceberem”: é o pretérito mais-que-perfeito. A forma simples (-ra) equivale à composta (havia/tinha + particípio): “do que se havia previsto”.</p></div>
+</article>
+<article class="q" id="q4" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 04</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Estaria mantida a correção gramatical do texto caso a forma “Houve” fosse substituída por Houveram, já que o verbo deve concordar com “atrasos”.</p>
+ <div class="btns" role="group" aria-label="Responder item 4"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Haver impessoal · concordância</span></p><p class="com">No sentido de existir ou ocorrer, HAVER é impessoal: não tem sujeito e fica sempre na 3ª pessoa do singular. “Atrasos” é objeto direto, não sujeito. “Houveram atrasos” é forma condenada pela norma-padrão.</p></div>
+</article>
+<article class="q" id="q5" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 05</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">O segmento “Houve atrasos” poderia ser reescrito como Existiram atrasos, sem prejuízo da correção gramatical do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 5"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Haver × existir · flexão</span></p><p class="com">EXISTIR é verbo pessoal: “atrasos” passa a ser o sujeito, e o verbo vai para o plural (“Existiram atrasos”). Na troca de haver por existir, o número muda: o singular de haver vira plural com existir.</p></div>
+</article>
+<article class="q" id="q6" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 06</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">No primeiro período do texto, a forma verbal “Há” poderia ser substituída por Faz, sem prejuízo da correção gramatical e do sentido.</p>
+ <div class="btns" role="group" aria-label="Responder item 6"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Haver e fazer · tempo decorrido</span></p><p class="com">Indicando tempo decorrido, haver e fazer são impessoais e equivalentes: “Faz três anos, a biblioteca iniciou…”. Ambos ficam no singular.</p></div>
+</article>
+<article class="q" id="q7" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 07</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Se os recursos vierem”, a forma “vierem” corresponde ao futuro do subjuntivo do verbo ver.</p>
+ <div class="btns" role="group" aria-label="Responder item 7"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Futuro do subjuntivo · ver × vir</span></p><p class="com">“Vierem” é futuro do subjuntivo de VIR (quando eu vier, se eles vierem). O futuro do subjuntivo de VER é “virem” (quando eu vir, se eles virem). Teste: o futuro do subjuntivo sai do pretérito perfeito sem o -ram (vie-ram → vierem; vi-ram → virem).</p></div>
+</article>
+<article class="q" id="q8" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 08</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma “vierem” poderia ser substituída por virem, sem prejuízo da correção gramatical e dos sentidos do texto, por se tratar de variantes da mesma forma verbal.</p>
+ <div class="btns" role="group" aria-label="Responder item 8"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Futuro do subjuntivo · formas distintas</span></p><p class="com">“Virem” é futuro do subjuntivo de VER (“se os recursos virem…” = se os recursos enxergarem). As formas não são variantes, pertencem a verbos diferentes. A troca muda o sentido e torna o trecho incoerente.</p></div>
+</article>
+<article class="q" id="q9" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 09</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">No segundo parágrafo, a forma “faltem” poderia ser substituída por faltarem, sem prejuízo da correção gramatical do texto, uma vez que ambas as formas expressam hipótese.</p>
+ <div class="btns" role="group" aria-label="Responder item 9"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: “Caso” + presente do subjuntivo</span></p><p class="com">A conjunção CASO exige o presente do subjuntivo (caso faltem, caso venham). O futuro do subjuntivo aparece com “se” e “quando” (se faltarem, quando vierem). “Caso faltarem” é construção rejeitada pela norma-padrão. Atenção: o infográfico associa “caso” ao futuro do subjuntivo, o que não é correto.</p></div>
+</article>
+<article class="q" id="q10" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 10</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “a equipe concluirá a etapa final”, a forma verbal no futuro do presente apresenta como certo um fato futuro, cuja realização, no texto, está condicionada ao que se expressa na oração iniciada por “Se”.</p>
+ <div class="btns" role="group" aria-label="Responder item 10"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Futuro do presente × condição</span></p><p class="com">O futuro do presente projeta o fato como certo. A correlação “Se + futuro do subjuntivo → futuro do presente” (se vierem → concluirá) apresenta uma condição realizável, diferente da hipótese remota de “se viessem → concluiria”.</p></div>
+</article>
+<article class="q" id="q11" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 11</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Os servidores que vieram de outros setores”, a forma “vieram” indica deslocamento e está no pretérito perfeito do indicativo do verbo vir.</p>
+ <div class="btns" role="group" aria-label="Responder item 11"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Vir · pretérito perfeito</span></p><p class="com">Vir: vim, vieste, veio, viemos, viestes, VIERAM. Os servidores se deslocaram de outros setores. Não confundir com “viram” (ver).</p></div>
+</article>
+<article class="q" id="q12" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 12</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A substituição de “têm contribuído” por contribuíram preservaria os sentidos do texto, pois ambas as formas expressam ação concluída no passado.</p>
+ <div class="btns" role="group" aria-label="Responder item 12"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Perfeito composto × simples</span></p><p class="com">“Têm contribuído” (pretérito perfeito composto) indica ação que começou no passado e se prolonga até o presente (= vêm contribuindo). “Contribuíram” apresenta fato concluído. A troca seria gramatical, mas alteraria o sentido.</p></div>
+</article>
+<article class="q" id="q13" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 13</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Os verbos “ratificou” e “retificou” são variantes de um mesmo verbo, razão pela qual a permuta entre eles não alteraria o sentido do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 13"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Ratificar × retificar</span></p><p class="com">RATIFICAR = confirmar, validar (o diretor confirmou o relatório). RETIFICAR = corrigir (o relatório corrigiu dados). São parônimos com sentidos distintos, e a permuta mudaria o que o texto afirma.</p></div>
+</article>
+<article class="q" id="q14" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 14</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Infere-se do último período do texto que o relatório final corrigiu dados divulgados anteriormente.</p>
+ <div class="btns" role="group" aria-label="Responder item 14"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Retificar · sentido</span></p><p class="com">“Retificou dados divulgados anteriormente” = corrigiu, emendou esses dados. Mnemônico: reTificar ≈ reTocar (corrigir); raTificar ≈ aTestar (confirmar).</p></div>
+</article>
+<article class="q" id="q15" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 15</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto I</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma “levaria”, no primeiro parágrafo, expressa fato posterior a um momento passado, o da percepção dos técnicos.</p>
+ <div class="btns" role="group" aria-label="Responder item 15"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Futuro do pretérito · futuro do passado</span></p><p class="com">Os técnicos perceberam (passado) que o trabalho levaria (depois desse momento) mais tempo. É o futuro do pretérito no valor de futuro em relação a um passado, um dos usos que a CEBRASPE mais cobra.</p></div>
+</article><h2 class="gh">Texto II</h2><div class="texto"><span class="flab">Texto II <span class="authored">TEXTO AUTORAL</span></span><p>Faz meses que os usuários reclamam da lentidão do sistema de pesquisa legislativa. Se a equipe técnica revisse o código, talvez o problema fosse resolvido.</p><p>A coordenação está ciente da situação e é responsável por propor soluções. Ela via, até então, a questão como secundária, mas a crise acentuou-se e ressaltou a urgência de mudanças. Existem alternativas, e a direção as estudará.</p></div><p class="cmd"><b>Considerando os aspectos linguísticos do texto II, julgue os itens subsequentes.</b></p>
+<article class="q" id="q16" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 16</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Faz meses que os usuários reclamam”, a forma verbal “Faz” deveria estar no plural (Fazem), para concordar com “meses”.</p>
+ <div class="btns" role="group" aria-label="Responder item 16"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Fazer impessoal · tempo</span></p><p class="com">Indicando tempo decorrido, FAZER é impessoal: não tem sujeito e fica na 3ª pessoa do singular (faz meses, fazia anos). A expressão de tempo não é sujeito, e o verbo não concorda com ela. O infográfico diz que fazer “concorda com o tempo”; o correto é que ele não concorda com nada e permanece no singular.</p></div>
+</article>
+<article class="q" id="q17" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 17</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma “revisse” pertence ao verbo rever, que se conjuga como ver; por essa razão, seria incorreto substituí-la por reviesse.</p>
+ <div class="btns" role="group" aria-label="Responder item 17"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Derivados de ver · conjugação</span></p><p class="com">REVER segue VER: se eu visse → se eu revisse. “Reviesse” seguiria o modelo de vir (viesse), errado para rever. O mesmo vale para prever (previsse) e antever (antevisse).</p></div>
+</article>
+<article class="q" id="q18" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 18</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A oração “Se a equipe técnica revisse o código” apresenta como real um fato já ocorrido.</p>
+ <div class="btns" role="group" aria-label="Responder item 18"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Imperfeito do subjuntivo · hipótese</span></p><p class="com">Se + pretérito imperfeito do subjuntivo apresenta hipótese, não fato: a equipe não reviu o código. A sequência “talvez o problema fosse resolvido” reforça o caráter hipotético.</p></div>
+</article>
+<article class="q" id="q19" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 19</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “A coordenação está ciente da situação”, o verbo estar exprime estado tido como transitório, ao passo que, em “é responsável por propor soluções”, o verbo ser atribui à coordenação característica tida como própria de sua função.</p>
+ <div class="btns" role="group" aria-label="Responder item 19"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Ser × estar</span></p><p class="com">ESTAR indica estado ou situação (estar ciente agora). SER indica característica tida como permanente ou definidora (ser responsável, como atribuição do cargo). Os dois são verbos de ligação, e a diferença está no aspecto que atribuem.</p></div>
+</article>
+<article class="q" id="q20" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 20</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma verbal “via” corresponde ao pretérito imperfeito do indicativo do verbo vir.</p>
+ <div class="btns" role="group" aria-label="Responder item 20"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Ver × vir · imperfeito</span></p><p class="com">“Via” é o imperfeito de VER (eu via, ela via). O imperfeito de VIR é “vinha”. No texto, “Ela via a questão como secundária” = enxergava, considerava.</p></div>
+</article>
+<article class="q" id="q21" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 21</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">No trecho “Ela via, até então, a questão como secundária”, a forma verbal expressa um modo de ver que se manteve ao longo de um período no passado.</p>
+ <div class="btns" role="group" aria-label="Responder item 21"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Pretérito imperfeito · duração</span></p><p class="com">O pretérito imperfeito indica ação durativa ou habitual no passado, e “até então” delimita esse período. Contraste: “viu” (perfeito) indicaria fato pontual e concluído.</p></div>
+</article>
+<article class="q" id="q22" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 22</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A forma “acentuou-se” poderia ser substituída por intensificou-se, sem prejuízo dos sentidos do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 22"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Acentuar × ressaltar</span></p><p class="com">ACENTUAR(-SE) = intensificar(-se), tornar(-se) mais forte. RESSALTAR = destacar, pôr em evidência. A crise intensificou-se e, por isso, destacou a urgência. A troca preserva o sentido.</p></div>
+</article>
+<article class="q" id="q23" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 23</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Caso o verbo existir, em “Existem alternativas”, fosse substituído por haver, a forma verbal deveria permanecer no plural, para concordar com “alternativas”.</p>
+ <div class="btns" role="group" aria-label="Responder item 23"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Existir → haver</span></p><p class="com">Com HAVER (= existir), o verbo é impessoal e fica no singular: “Há alternativas”. Só EXISTIR concorda com “alternativas”, que é seu sujeito.</p></div>
+</article>
+<article class="q" id="q24" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 24</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Texto II</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">A substituição de “estudará” por estudaria preservaria o sentido original do texto.</p>
+ <div class="btns" role="group" aria-label="Responder item 24"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Futuro do presente × futuro do pretérito</span></p><p class="com">“Estudará” apresenta o fato futuro como certo. “Estudaria” o transformaria em hipótese ou possibilidade condicionada, enfraquecendo o compromisso da direção. A troca é gramatical, mas altera o sentido.</p></div>
+</article><h2 class="gh">Itens avulsos</h2><p class="cmd"><b>Julgue os itens a seguir, a respeito do emprego de formas verbais.</b></p>
+<article class="q" id="q25" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 25</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Nós viríamos à reunião se fôssemos convidados”, a forma “viríamos” está no futuro do pretérito do verbo vir e expressa fato condicionado a uma hipótese.</p>
+ <div class="btns" role="group" aria-label="Responder item 25"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Futuro do pretérito · correlação</span></p><p class="com">Correlação clássica: se + imperfeito do subjuntivo (fôssemos) → futuro do pretérito (viríamos). O fato só ocorreria se a condição se realizasse. Viria(mos) = vir; veria(mos) = ver.</p></div>
+</article>
+<article class="q" id="q26" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 26</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">O período “Quando eles verem o resultado, ficarão satisfeitos” está de acordo com a norma-padrão.</p>
+ <div class="btns" role="group" aria-label="Responder item 26"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Futuro do subjuntivo de ver</span></p><p class="com">O futuro do subjuntivo de VER é “virem”: “Quando eles virem o resultado…”. “Verem” é o infinitivo flexionado (para eles verem), forma diferente. Teste do “fazer”: troque por “fizerem”. Se couber, use a forma do futuro do subjuntivo.</p></div>
+</article>
+<article class="q" id="q27" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 27</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">No período “Embora esteja cansada, a servidora concluiu o relatório”, o emprego do subjuntivo em “esteja” indica que o enunciador duvida de que a servidora esteja cansada.</p>
+ <div class="btns" role="group" aria-label="Responder item 27"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Subjuntivo exigido pela concessiva</span></p><p class="com">Após “embora”, o subjuntivo é exigência gramatical e pode expressar um fato real: a servidora está cansada, e isso não impediu a conclusão do relatório. O infográfico associa subjuntivo a “dúvida e desejo”, mas o modo nem sempre tem esse valor, e a CEBRASPE explora essa generalização.</p></div>
+</article>
+<article class="q" id="q28" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 28</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Deve haver soluções para o problema”, o verbo dever permanece no singular por formar locução verbal com o verbo impessoal haver.</p>
+ <div class="btns" role="group" aria-label="Responder item 28"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Auxiliar de verbo impessoal</span></p><p class="com">Em locução verbal, o auxiliar herda a impessoalidade do principal: “deve haver”, “vai haver”, “pode fazer dez anos”. “Devem haver soluções” é erro de concordância.</p></div>
+</article>
+<article class="q" id="q29" data-gab="Certo">
+ <header class="qh"><span class="qn">Item 29</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “A análise foi realizada pela equipe técnica”, o verbo ser atua como auxiliar na formação da voz passiva analítica.</p>
+ <div class="btns" role="group" aria-label="Responder item 29"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>CERTO</b> · <span class="asp">Aspecto: Ser auxiliar · voz passiva</span></p><p class="com">Voz passiva analítica = SER + particípio (foi realizada), com agente da passiva (“pela equipe técnica”). Na ativa: “A equipe técnica realizou a análise”.</p></div>
+</article>
+<article class="q" id="q30" data-gab="Errado">
+ <header class="qh"><span class="qn">Item 30</span><span class="badge ined">INÉDITA · ESTILO CEBRASPE</span><span class="meta">Itens avulsos</span><span class="tipo">Certo/Errado</span></header>
+ <p class="item">Em “Tenho estudado os verbos com atenção”, a locução “Tenho estudado” corresponde a tempo composto que expressa ação concluída em momento pontual do passado.</p>
+ <div class="btns" role="group" aria-label="Responder item 30"><button type="button" class="ans" data-v="Certo">Certo</button><button type="button" class="ans" data-v="Errado">Errado</button></div>
+ <div class="fb" aria-live="polite"><p class="verdict"></p><p class="gab">Gabarito: <b>ERRADO</b> · <span class="asp">Aspecto: Ter auxiliar · perfeito composto</span></p><p class="com">TER + particípio forma o pretérito perfeito composto, que indica ação repetida ou contínua, iniciada no passado e que chega ao presente (= venho estudando). Ação pontual e concluída seria “estudei”.</p></div>
+</article>
+
+<h2 style="font-size:20px;margin-top:34px">Grade de gabarito</h2>
+<p class="small noprint">Cada célula leva à questão. O gabarito aparece à medida que você responde. <button type="button" id="bGrid">Mostrar/ocultar todo o gabarito</button></p>
+<div class="grid" id="grid"><a class="cell" href="#q1" data-i="1"><span>01</span><b class="gv">C</b></a><a class="cell" href="#q2" data-i="2"><span>02</span><b class="gv">E</b></a><a class="cell" href="#q3" data-i="3"><span>03</span><b class="gv">C</b></a><a class="cell" href="#q4" data-i="4"><span>04</span><b class="gv">E</b></a><a class="cell" href="#q5" data-i="5"><span>05</span><b class="gv">C</b></a><a class="cell" href="#q6" data-i="6"><span>06</span><b class="gv">C</b></a><a class="cell" href="#q7" data-i="7"><span>07</span><b class="gv">E</b></a><a class="cell" href="#q8" data-i="8"><span>08</span><b class="gv">E</b></a><a class="cell" href="#q9" data-i="9"><span>09</span><b class="gv">E</b></a><a class="cell" href="#q10" data-i="10"><span>10</span><b class="gv">C</b></a><a class="cell" href="#q11" data-i="11"><span>11</span><b class="gv">C</b></a><a class="cell" href="#q12" data-i="12"><span>12</span><b class="gv">E</b></a><a class="cell" href="#q13" data-i="13"><span>13</span><b class="gv">E</b></a><a class="cell" href="#q14" data-i="14"><span>14</span><b class="gv">C</b></a><a class="cell" href="#q15" data-i="15"><span>15</span><b class="gv">C</b></a><a class="cell" href="#q16" data-i="16"><span>16</span><b class="gv">E</b></a><a class="cell" href="#q17" data-i="17"><span>17</span><b class="gv">C</b></a><a class="cell" href="#q18" data-i="18"><span>18</span><b class="gv">E</b></a><a class="cell" href="#q19" data-i="19"><span>19</span><b class="gv">C</b></a><a class="cell" href="#q20" data-i="20"><span>20</span><b class="gv">E</b></a><a class="cell" href="#q21" data-i="21"><span>21</span><b class="gv">C</b></a><a class="cell" href="#q22" data-i="22"><span>22</span><b class="gv">C</b></a><a class="cell" href="#q23" data-i="23"><span>23</span><b class="gv">E</b></a><a class="cell" href="#q24" data-i="24"><span>24</span><b class="gv">E</b></a><a class="cell" href="#q25" data-i="25"><span>25</span><b class="gv">C</b></a><a class="cell" href="#q26" data-i="26"><span>26</span><b class="gv">E</b></a><a class="cell" href="#q27" data-i="27"><span>27</span><b class="gv">E</b></a><a class="cell" href="#q28" data-i="28"><span>28</span><b class="gv">C</b></a><a class="cell" href="#q29" data-i="29"><span>29</span><b class="gv">C</b></a><a class="cell" href="#q30" data-i="30"><span>30</span><b class="gv">E</b></a></div>
+<footer>Itens e textos autorais (INÉDITOS), elaborados com base nos infográficos enviados e conferidos com a Aula 4 (Verbos) do Prof. Felipe Luccas / Estratégia Concursos. Não reproduzem questões reais da CEBRASPE.</footer>
+</main>
+<script>
+(function(){
+ var h=document.documentElement;h.classList.add('js');var KEY='conectivos-verbos-ined';
+ try{var t=localStorage.getItem('conectivos-theme');if(t)h.setAttribute('data-theme',t);}catch(e){}
+ document.getElementById('bTheme').onclick=function(){var n=h.getAttribute('data-theme')==='light'?'dark':'light';h.setAttribute('data-theme',n);try{localStorage.setItem('conectivos-theme',n);}catch(e){}};
+ document.getElementById('bPrint').onclick=function(){window.print();};
+ var qs=[].slice.call(document.querySelectorAll('.q')),cells=[].slice.call(document.querySelectorAll('.cell'));
+ var state={};try{state=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){state={};}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+ function apply(q,i,v){var g=q.getAttribute('data-gab'),ok=v===g;q.classList.add('done');
+  q.querySelectorAll('.ans').forEach(function(b){b.disabled=true;var bv=b.getAttribute('data-v');if(bv===g)b.classList.add('right');else if(bv===v)b.classList.add('wrong');b.setAttribute('aria-pressed',bv===v);});
+  var vd=q.querySelector('.verdict');vd.textContent=ok?'Você acertou.':'Resposta incorreta (você marcou '+v+').';vd.className='verdict '+(ok?'ok':'no');
+  var c=cells[i];c.classList.add('ans',ok?'ok':'no');}
+ function score(){var a=0,o=0;qs.forEach(function(q,i){if(state[i]){a++;if(state[i]===q.getAttribute('data-gab'))o++;}});
+  document.getElementById('sAns').textContent=a;document.getElementById('sOk').textContent=o;document.getElementById('sPct').textContent=a?Math.round(100*o/a)+'%':'—';}
+ qs.forEach(function(q,i){q.querySelectorAll('.ans').forEach(function(b){b.onclick=function(){if(q.classList.contains('done'))return;state[i]=b.getAttribute('data-v');save();apply(q,i,state[i]);score();};});if(state[i])apply(q,i,state[i]);});
+ score();
+ document.getElementById('bReset').onclick=function(){state={};save();location.reload();};
+ document.getElementById('bGrid').onclick=function(){document.getElementById('grid').classList.toggle('show');};
+ var opened=[];window.addEventListener('beforeprint',function(){opened=[];document.querySelectorAll('details').forEach(function(d){if(!d.open){d.open=true;opened.push(d);}});});
+ window.addEventListener('afterprint',function(){opened.forEach(function(d){d.open=false;});});
+})();
+</script>
+</body>
+</html>
